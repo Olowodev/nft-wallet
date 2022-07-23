@@ -3,12 +3,13 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5, AntDesign, MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { faSliders, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Pressable, View } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -61,35 +62,60 @@ function BottomTabNavigator() {
       initialRouteName="TabOne"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: {
+          borderRadius: 24,
+          position: 'absolute',
+          bottom: 25,
+          left: 10,
+          right: 10,
+          elevation: 0,
+          height: 85,
+          backgroundColor: 'rgba(42, 53, 71, 1)',
+        }
       }}>
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          title: 'Home',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerShown: false,
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Wallet',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="wallet" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabThree"
+        component={TabTwoScreen}
+        options={{
+          title: 'Swap',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <View style={{ position: 'absolute', padding: 16, backgroundColor: 'blue', borderRadius: '50%', top: -35,}}><AntDesign size={40} name="swap" style={{ transform: [{rotate : '90deg'}]}} color={color} /></View> ,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabFour"
+        component={TabTwoScreen}
+        options={{
+          title: 'Market',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <MaterialIcons name="bar-chart" size={40} color={color} />
+        }}
+      />
+      <BottomTab.Screen
+        name="TabFive"
+        component={TabTwoScreen}
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Ionicons name="ios-person-circle-outline" size={40} color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -100,8 +126,8 @@ function BottomTabNavigator() {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome5>['name'];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome5 size={20} style={{ marginBottom: -3 }} {...props} />;
 }
