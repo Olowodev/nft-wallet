@@ -1,16 +1,18 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import {Text} from './Themed'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const Action = ({name, color, text}) => {
   return (
+    <TouchableOpacity>
     <View style={styles.action}>
       <View style={[styles.actionButton, {backgroundColor: color}]}>
         <MaterialCommunityIcons name={name} color='white' size={34} />
       </View>
       <Text>{text}</Text>
     </View>
+    </TouchableOpacity>
   )
 }
 

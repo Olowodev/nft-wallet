@@ -2,6 +2,7 @@ import { StyleSheet, View, Image } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import {Text} from './Themed'
+import FastImage from 'react-native-fast-image'
 
 interface headerProps {
   image?: boolean,

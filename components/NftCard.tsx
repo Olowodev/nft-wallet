@@ -2,6 +2,7 @@ import { StyleSheet, View, Image } from 'react-native'
 import React from 'react'
 import { Text } from './Themed'
 import { FontAwesome5 } from '@expo/vector-icons'
+import FastImage from 'react-native-fast-image'
 
 interface cardProps {
     image: any,
@@ -14,7 +15,7 @@ const NftCard: React.FC<cardProps> = ({image, collection, price, name}) => {
   return (
     <View style={{margin: 14}}>
         <View style={{borderRadius: 20, backgroundColor: '#2A3547'}}>
-            <Image source={image} style={styles.img} />
+            <Image transition={false} source={image} style={styles.img} />
             <View style={{margin: 10}}>
                 <Text style={{fontWeight: '600', fontSize: 14, lineHeight: 14,}}>{collection}</Text>
                 <View style={{marginTop: 6, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>

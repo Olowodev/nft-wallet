@@ -8,12 +8,12 @@ const WalletBalance = () => {
     <View>
       <View style={styles.walletBalance}>
           <Text style={styles.title}>Current Wallet Balance</Text>
-          <Text style={styles.balance}>$ 5,323.00</Text>
+          <Text style={styles.balance}>$ 5,300.00</Text>
           <View style={styles.currency}>
-            <Text>BTC : 23,148.80</Text>
+            <Text>BTC : 0.24</Text>
             <View style={styles.profit}>
               <FontAwesome name='caret-down' color='#ff002e' size={20} />
-              <Text style={styles.profitText}>0.34%</Text>
+              <Text style={styles.profitText}>0.1%</Text>
             </View>
           </View>
         </View>

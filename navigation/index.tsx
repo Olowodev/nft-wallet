@@ -15,8 +15,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import Profile from '../screens/Profile';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import Wallet from '../screens/Wallet';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -84,7 +86,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={Wallet}
         options={{
           title: 'Wallet',
           headerShown: false,
@@ -111,11 +113,11 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabFive"
-        component={TabTwoScreen}
+        component={Profile}
         options={{
-          title: 'Profile',
+          title: 'Settings',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Ionicons name="ios-person-circle-outline" size={40} color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome5 name="cog" size={30} color={color} />,
         }}
       />
     </BottomTab.Navigator>
