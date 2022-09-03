@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View, Platform } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import Header from '../components/Header';
 import NftCard from '../components/NftCard';
 import { Text, SafeAreaView } from '../components/Themed';
 import { market } from '../data';
+import { RootTabScreenProps } from '../types';
 
-export default function TabTwoScreen() {
+export default function TabTwoScreen({navigation}: RootTabScreenProps<'TabTwo'>) {
 
-  
+  const ios = Platform.OS === 'ios'
 
   const [categoryState, setCategoryState] = useState('Art');
   return (
     <SafeAreaView style={styles.market}>
       <View style={styles.container}>
-        <Header title='Market' headerStyle={{paddingHorizontal: 22}} styleProps={{fontWeight: '600', fontSize: 24, lineHeight: 29}} />
+        <Header navigation={navigation} title='Market' headerStyle={{paddingHorizontal: 22}} styleProps={{fontWeight: '600', fontSize: 24, lineHeight: 29}} />
         <View style={{marginTop: 24, marginLeft: 20}}>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
              <TouchableOpacity onPress={()=>setCategoryState('Art')} style={{paddingVertical: 8, paddingHorizontal: 19, borderRadius: 50, backgroundColor: '#2f2f34', marginRight: 15, borderColor: '#0aff96', borderWidth: categoryState=='Art' ? 2 : 0}}>
@@ -36,12 +37,12 @@ export default function TabTwoScreen() {
           </ScrollView>
         
         </View>
-        <View style={{flex: 1, marginHorizontal: 6, marginTop: 21, marginBottom: 50}}>
+        <View style={{flex: 1, marginHorizontal: 20, marginTop: 21, marginBottom: ios ? 60 : 85}}>
         <FlatList showsVerticalScrollIndicator={false} numColumns={2}
           data={market.find(({category})=> category == categoryState)?.nftData}
           renderItem={({item, index}) => {
             return (
-              <NftCard {...item} />
+              <NftCard index={index} {...item} />
             )
           }}
 
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    paddingTop: 35,
+    paddingTop: 25,
     flex: 1
   },
   title: {

@@ -3,9 +3,9 @@ import React from 'react'
 import {Text} from './Themed'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-const Action = ({name, color, text}) => {
+const Action = ({name, color, text, navigation}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=> navigation.navigate('ComingSoon')}>
     <View style={styles.action}>
       <View style={[styles.actionButton, {backgroundColor: color}]}>
         <MaterialCommunityIcons name={name} color='white' size={34} />
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   actionButton: {
-    borderRadius: '50%',
+    borderRadius: 52,
     padding: 18,
     flexDirection: 'row',
     alignItems: 'center',

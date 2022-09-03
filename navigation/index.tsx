@@ -13,11 +13,12 @@ import { ColorSchemeName, Pressable, View } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import ComingSoon from '../screens/ComingSoon';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import Profile from '../screens/Profile';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import Profile from '../screens/Settings';
+import TabOneScreen from '../screens/Home';
+import TabTwoScreen from '../screens/Market';
 import Wallet from '../screens/Wallet';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -43,6 +44,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name='ComingSoon' component={ComingSoon} options={{headerShown: false}} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -67,13 +69,14 @@ function BottomTabNavigator() {
         tabBarStyle: {
           borderRadius: 24,
           position: 'absolute',
-          bottom: 25,
+          bottom: 0,
           left: 10,
           right: 10,
           elevation: 0,
-          height: 85,
+          height: 75,
           backgroundColor: 'rgba(42, 53, 71, 1)',
-        }
+        },
+        tabBarShowLabel: false
       }}>
       <BottomTab.Screen
         name="TabOne"
@@ -95,11 +98,11 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabThree"
-        component={TabTwoScreen}
+        component={ComingSoon}
         options={{
           title: 'Swap',
           headerShown: false,
-          tabBarIcon: ({ color }) => <View style={{ position: 'absolute', padding: 16, backgroundColor: 'blue', borderRadius: '50%', top: -35,}}><AntDesign size={40} name="swap" style={{ transform: [{rotate : '90deg'}]}} color={color} /></View> ,
+          tabBarIcon: ({ color }) => <View style={{ position: 'absolute', padding: 16, backgroundColor: 'blue', borderRadius: 50, top: -25,}}><AntDesign size={40} name="swap" style={{ transform: [{rotate : '90deg'}]}} color={color} /></View> ,
         }}
       />
       <BottomTab.Screen
@@ -131,5 +134,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome5>['name'];
   color: string;
 }) {
-  return <FontAwesome5 size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome5 size={20} style={{}} {...props} />;
 }

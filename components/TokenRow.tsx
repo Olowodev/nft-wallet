@@ -4,7 +4,6 @@ import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { LineChart } from 'react-native-chart-kit';
 import { Text } from './Themed';
 import { Dimensions } from "react-native";
-import FastImage from 'react-native-fast-image'
 
 
 interface tokenProps  {

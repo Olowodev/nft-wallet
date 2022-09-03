@@ -93,12 +93,12 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
   return (
     <SafeAreaView style={styles.home}>
       <View style={styles.container}>
-        <Header image styleProps={{marginLeft: 13, fontWeight: '600', fontSize: 16, lineHeight: 19}} title='Olowoo' />
+        <Header navigation={navigation} image styleProps={{marginLeft: 13, fontWeight: '600', fontSize: 16, lineHeight: 19}} title='Olowoo' />
         <WalletBalance />
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 35}}>
-          <Action color='#2A3547' name='bank-transfer-out' text='Send' />
-          <Action color='blue' name='plus' text='Buy' />
-          <Action color='#2A3547' name='bank-transfer-in' text='Receive' />
+          <Action navigation={navigation} color='#2A3547' name='bank-transfer-out' text='Send' />
+          <Action navigation={navigation} color='blue' name='plus' text='Buy' />
+          <Action navigation={navigation} color='#2A3547' name='bank-transfer-in' text='Receive' />
         </View>
         <View onLayout={(event)=>getLayout(event)} style={{marginTop: 34, flexDirection: 'row', borderRadius: 100, backgroundColor: '#212436', position: 'relative'}}>
           <TabIndicator progress={progress} translateX={translateX} layoutWidth={layoutWidth} />
@@ -115,7 +115,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
           renderItem={({item, index}) => {
             return (
               <View style={{flex: 1, width: width - 48}}>
-              <FlatList showsVerticalScrollIndicator={false}  style={{ marginBottom: 75, marginRight: 10 }} data={item.cryptoData}
+              <FlatList showsVerticalScrollIndicator={false}  style={{ marginBottom: 85, marginRight: 10 }} data={item.cryptoData}
                 renderItem={({ item, index}) => {
                   return (
                     <TokenRow key={index} {...item} />

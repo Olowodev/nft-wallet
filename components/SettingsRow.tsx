@@ -1,6 +1,5 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { IconProps } from '@expo/vector-icons/build/createIconSet'
 import { SafeAreaView, Text } from './Themed'
 import { AntDesign, FontAwesome5, FontAwesome } from '@expo/vector-icons'
 
@@ -10,13 +9,16 @@ interface setRowProps {
     text: string,
     marginTop?: number,
     marginBottom?: number,
-    iconFamily?: string
+    iconFamily?: string,
+    link?: string | undefined, 
+    navigation?: any,
+    screen?: string
 }
 
-const SettingsRow: React.FC<setRowProps> = ({icon, bgColor, text, marginTop, marginBottom, iconFamily}) => {
+const SettingsRow: React.FC<setRowProps> = ({icon, bgColor, text, marginTop, marginBottom, iconFamily, link, navigation, screen}) => {
   return (
     <View style={{marginTop: marginTop, marginBottom: marginBottom}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=> link ?  Linking.openURL(link) : navigation.navigate('ComingSoon')}>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20}}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <View style={{backgroundColor: bgColor, padding: 10, borderRadius: 5, marginRight: 15}}>
