@@ -1,5 +1,5 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet, View, Image, FlatList, ScrollView, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, FlatList, Platform, TouchableOpacity } from 'react-native';
 
 import { Text, SafeAreaView } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
@@ -8,11 +8,13 @@ import WalletBalance from '../components/WalletBalance';
 import Action from '../components/Action';
 import { Dimensions, PixelRatio } from 'react-native';
 import { homeTabs } from '../data';
-import Animated, {useSharedValue, interpolate, useAnimatedStyle, withTiming, withSpring, useAnimatedScrollHandler, useAnimatedRef} from 'react-native-reanimated';
+import Animated, {useSharedValue, interpolate, useAnimatedStyle, withTiming, useAnimatedScrollHandler} from 'react-native-reanimated';
 
 
 import TokenRow from '../components/TokenRow';
 import { useEffect, useRef, useState } from 'react';
+
+
 
 const TabIndicator = ({progress, translateX, layoutWidth}) => {
 
@@ -42,7 +44,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 
   const AnimatedFlatlist  = Animated.createAnimatedComponent(FlatList)
   const [layoutWidth, setLayoutWidth] = useState()
-
+const ios = Platform.OS === 'ios'
   const ref = useRef()
 
   const progress = useSharedValue(0)
@@ -115,7 +117,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
           renderItem={({item, index}) => {
             return (
               <View style={{flex: 1, width: width - 48}}>
-              <FlatList showsVerticalScrollIndicator={false}  style={{ marginBottom: 85, marginRight: 10 }} data={item.cryptoData}
+              <FlatList showsVerticalScrollIndicator={false}  style={{ marginBottom: ios ? 65 : 85, marginRight: 10 }} data={item.cryptoData}
                 renderItem={({ item, index}) => {
                   return (
                     <TokenRow key={index} {...item} />
