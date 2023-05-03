@@ -21,7 +21,7 @@ const TokenRow: React.FC<tokenProps> = ({ iconName, price, percentage, shortName
       <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 30}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <View>
-                <Image source={iconName} transition={false} style={{width: !nft?40:70, height:nft?70:40, borderRadius: nft?10:0 }} />
+                <Image source={iconName} style={{width: !nft?40:70, height:nft?70:40, borderRadius: nft?10:0 }} />
             </View>
           {/*<View style={{borderRadius: '50%', paddingVertical: 14, backgroundColor: bgColor, paddingHorizontal: 18}}>
             {f5 ? <FontAwesome5 name={iconName} size={30} color='white' /> : <FontAwesome name={iconName} size={30} color='white' />}
