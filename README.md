@@ -5,7 +5,10 @@ This is a cryptocurrency and nft wallet application.
 ## Here's the result
 
 
-https://github.com/Olowodev/car-app/assets/99045599/2660c0d0-0cbc-4463-8ed4-eec9d15a120a
+
+https://github.com/Olowodev/nft-wallet/assets/99045599/3b0b341d-f1ac-4aa2-9a4f-1cebf8858c67
+
+
 
 
 <br>
